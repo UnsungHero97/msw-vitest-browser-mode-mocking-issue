@@ -17,9 +17,7 @@ describe('hello()', () => {
 
   beforeAll(async () => {
     worker = setupWorker();
-    await worker.start({
-      onUnhandledFrame: 'bypass',
-    });
+    await worker.start({ quiet: true });
   });
 
   afterEach(() => {
