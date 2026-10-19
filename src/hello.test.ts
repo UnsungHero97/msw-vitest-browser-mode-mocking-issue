@@ -1,4 +1,4 @@
-import { setupWorker, SetupWorker } from 'msw/browser';
+import { network } from 'virtual:msw';
 import { afterEach, beforeAll, describe, expect, test, vi } from 'vitest';
 
 import hello from './hello';
@@ -13,15 +13,13 @@ vi.mock(import('./world'), () => ({
 
 describe('hello()', () => {
 
-  let worker :SetupWorker;
-
   beforeAll(async () => {
-    worker = setupWorker();
-    await worker.start({ quiet: true });
+    network.configure({});
+    await network.enable();
   });
 
   afterEach(() => {
-    worker.resetHandlers();
+    network.resetHandlers();
   });
 
   test('hello_undefined', () => {

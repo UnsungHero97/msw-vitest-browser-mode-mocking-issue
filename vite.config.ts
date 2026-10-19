@@ -2,9 +2,12 @@ import { playwright } from '@vitest/browser-playwright';
 import { msw } from 'msw/vite';
 import { defineConfig } from 'vitest/config';
 
+// https://vite.dev/config
 // https://vitest.dev/config
 export default defineConfig({
-  plugins: [msw()],
+  plugins: [
+    msw(),
+  ],
   test: {
     browser: {
       enabled: true,
